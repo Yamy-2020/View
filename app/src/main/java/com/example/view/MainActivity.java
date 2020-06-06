@@ -12,7 +12,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private static final String TAG = "MainActivity";
     private CircleProgressBar cpb;
     private Button btn;
-    private int a = 1000;
+    private boolean isCheck = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,10 +32,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn:
-                if (a == 100) {
-                    downLoad();
-                    Log.e(TAG, "onClick: " + "0000000");
-                } else if (a == 1000) {
+                if (isCheck = false) {
                     downLoad();
                 }
                 break;
@@ -43,16 +40,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void downLoad() {
+        isCheck = true;
         new Thread(new Runnable() {
             @Override
             public void run() {
                 for (int i = 0; i < 101; i++) {
-                    a = i;
-                    cpb.setProgress(i);
                     try {
                         Thread.sleep(50);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
+                    }
+                    cpb.setProgress(i);
+                    if (i == 100) {
+                        isCheck = false;
                     }
                 }
             }
