@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CircleProgressBar">
+        <attr name="ringColor" format="color|reference"/>
+        <attr name="circleColor" format="color"/>
+        <attr name="ringWidth" format="dimension"/>
+        <attr name="startAngle" format="float"/>
+        //扫过的角度
+        <attr name="sweepAngle" format="float"/>
+        <attr name="android:textColor"/>
+        <attr name="android:text"/>
+        <attr name="android:textSize"/>
+    </declare-styleable>
+</resources>
